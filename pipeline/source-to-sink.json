@@ -113,7 +113,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(activity('Lookup').output.firstRow.source_system,\n        '/',\n        activity('Lookup').output.firstRow.source_table_name,\n        '/',\n        variables('test')\n\n\n)",
+								"value": "@concat(activity('Lookup').output.firstRow.source_system,\n        '/',\n        activity('Lookup').output.firstRow.source_table_name,\n        '/',\n       variables('start_time')\n\n\n)",
 								"type": "Expression"
 							}
 						}
@@ -133,7 +133,7 @@
 				],
 				"policy": {
 					"timeout": "0.12:00:00",
-					"retry": 0,
+					"retry": 2,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -174,7 +174,7 @@
 				],
 				"policy": {
 					"timeout": "0.12:00:00",
-					"retry": 0,
+					"retry": 2,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
