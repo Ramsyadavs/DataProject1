@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from [ctrl].[table_config] where table_id=@{pipeline().parameters.table_id}",
+							"value": "select * from [ctrl].[table_config] where table_id=1",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -47,6 +47,7 @@
 						"value": "@activity('serchingdata-activity').output.firstRow",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "injesion from source to silver",
