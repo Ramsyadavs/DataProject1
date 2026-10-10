@@ -121,7 +121,7 @@
 				]
 			},
 			{
-				"name": "landing-to-bronze",
+				"name": "landinng-to-bronze",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -133,7 +133,7 @@
 				],
 				"policy": {
 					"timeout": "0.12:00:00",
-					"retry": 2,
+					"retry": 5,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -142,12 +142,12 @@
 				"typeProperties": {
 					"notebookPath": "/Users/padilamsriramu@gmail.com/newadbProject5/landing-to-bronze",
 					"baseParameters": {
-						"source_table": {
-							"value": "@activity('Lookup').output.firstRow.source_system",
+						"source_system": {
+							"value": "@activity('Lookup').output.firstRow.source_system\r\n",
 							"type": "Expression"
 						},
 						"table_name": {
-							"value": "@activity('Lookup').output.firstRow.bronze_table_name",
+							"value": "@activity('Lookup').output.firstRow.bronze_table_name\r\n",
 							"type": "Expression"
 						},
 						"landing_timestamp": {
@@ -162,11 +162,11 @@
 				}
 			},
 			{
-				"name": "brone-to-silver",
+				"name": "bronze_to_silver",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "landing-to-bronze",
+						"activity": "landinng-to-bronze",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -184,7 +184,7 @@
 					"notebookPath": "/Users/padilamsriramu@gmail.com/newadbProject5/bronze-to-silver",
 					"baseParameters": {
 						"table_name": {
-							"value": "@activity('Lookup').output.firstRow.\r\nsilver_table_name",
+							"value": "@activity('Lookup').output.firstRow.silver_table_name",
 							"type": "Expression"
 						},
 						"landing_timestamp": {
